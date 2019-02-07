@@ -38,7 +38,6 @@ namespace Card_Class_02._07._19
                 this.Cards[position1] = this.Cards[position2];
                 this.Cards[position2] = temp;
             }
-            return this.Cards;
         }
     }
 }

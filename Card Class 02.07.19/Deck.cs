@@ -12,7 +12,7 @@ namespace Card_Class_02._07._19
         {
             //Building the Deck of Cards:
             string[] suits = { "s", "c", "h", "d" };
-            string[] values = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
+            string[] values = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
             Cards = new Card[52];
             for (int i = 0; i < suits.Length; i++)
             {
@@ -39,18 +39,32 @@ namespace Card_Class_02._07._19
             }
         }
 
-        int handSize = 3;
-        int cardsDealt = 0;
+        const int handSize = 3;
+        public int cardsDealt = 0;
 
-        public void Deal()
+        public Card[] Deal(int numberOfCardsToDeal = handSize)
         {
+            Card[] cardsToDeal = Cards.Skip(cardsDealt).Take(numberOfCardsToDeal).ToArray();
+            cardsDealt += numberOfCardsToDeal;
+            return cardsToDeal;
             Card[] hand1 = Cards.Take(handSize).ToArray();
             cardsDealt += hand1.Length;
             DisplayHand player1 = new DisplayHand("Player 1 Hand: ", hand1);
 
             Card[] hand2 = Cards.Skip(cardsDealt).Take(handSize).ToArray();
             cardsDealt += hand2.Length;
-            DisplayHand player2 = new DisplayHand("Player 2 Hand: ", hand1);
+            DisplayHand player2 = new DisplayHand("Player 2 Hand: ", hand2);
+        }
+
+        public Card upcard = null;
+
+        public Card UpCard()
+        {
+            upcard = Cards.Skip(cardsDealt).First();
+            Console.WriteLine("Upcard: " + upcard);
+            cardsDealt += 1;
+            return upcard;
         }
     }
+    
 }

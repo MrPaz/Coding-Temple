@@ -11,6 +11,7 @@ namespace Card_Class_02._07._19
         private Deck _deck;
         Card[] _hand1 = null;
         Card[] _hand2 = null;
+        bool isWinner = false;
 
         public PlayGame(Deck deck)
         {
@@ -23,17 +24,18 @@ namespace Card_Class_02._07._19
             // PlayGame();
             deck.UpCard();
             PlayerTurn = 0;
-            bool isWinner = false;
 
             while(isWinner == false)
             {
                 if (PlayerTurn % 2 == 0)
                 {
+                    Console.WriteLine("*** PLAYER 1 TURN ***");
                     DisplayHand("Player 1 Hand: ", _hand1);
                     Console.WriteLine("Player 1, enter \"T\" to take the upcard or \"D\" to draw from the deck.");
                 }
                 else
                 {
+                    Console.WriteLine("*** PLAYER 2 TURN ***");
                     DisplayHand("Player 2 Hand: ", _hand2);
                     Console.WriteLine("Player 2, enter \"T\" to take the upcard or \"D\" to draw from the deck.");
                 }
@@ -76,10 +78,18 @@ namespace Card_Class_02._07._19
             if (discardInput == "0")
             {
                 _deck.upcard = userSelection;
+                if (PlayerTurn == 0)
+                {
+                    DisplayHand("Player 1 Hand: ", _hand1);
+                }
+                else
+                {
+                    DisplayHand("Player 2 Hand: ", _hand2);
+                }
                 Console.WriteLine("Upcard: " + _deck.upcard);
                 PlayerTurn = (PlayerTurn + 1) % 2;
             }
-            else if (PlayerTurn == 1)
+            else if (PlayerTurn == 0)
             {
                 Card temp = _hand1[parsedDiscardInput];
                 _hand1[parsedDiscardInput] = userSelection;
@@ -104,6 +114,30 @@ namespace Card_Class_02._07._19
             string player = playerNumber;
 
             Console.WriteLine(playerNumber + string.Join(' ', hand.Select(x => x.ToString())));
+        }
+
+        public void IsWinner(Card[] hand)
+        {
+            var tempHand = hand.OrderBy(x => x.Value).ToArray();
+            //Array.Sort(hand);
+            //if (hand.Value[0] == hand.Value[1] && hand.Value[0] == hand.Value[2])
+            if (tempHand.All(x => tempHand[0].Value == x.Value))
+            {
+                isWinner = true;
+                Console.WriteLine("***** GIN!!! *****");
+                Console.WriteLine("***** Congratulation you won!!! *****");
+            }
+            else if ((tempHand.All(y => tempHand[0].Suit == y.Suit)) 
+                && (tempHand[0].Value + 1 == tempHand[1].Value && tempHand[1].Value + 1 == tempHand[2].Value)  )
+            {
+                isWinner = true;
+                Console.WriteLine("***** GIN!!! *****");
+                Console.WriteLine("***** Congratulation you won!!! *****");
+            }
+            else
+            {
+                isWinner = false;
+            }
         }
     }
 }

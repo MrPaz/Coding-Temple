@@ -44,8 +44,6 @@ namespace Card_Class_02._07._19
 
                 IsWinner(_hand1);
                 IsWinner(_hand2);
-
-
             }
         }
 
@@ -130,20 +128,23 @@ namespace Card_Class_02._07._19
             if (tempHand.All(x => tempHand[0].Value == x.Value))
             {
                 isWinner = true;
-                Console.WriteLine("***** GIN!!! *****");
-                Console.WriteLine("***** Congratulation you won!!! *****");
+                WinMessage();
             }
             else if ((tempHand.All(y => tempHand[0].Suit == y.Suit)) 
-                && (tempHand[0].Value + 1 == tempHand[1].Value && tempHand[1].Value + 1 == tempHand[2].Value)  )
+                && (tempHand[0].Value + 1 == tempHand[1].Value && tempHand[1].Value + 1 == tempHand[2].Value))
             {
                 isWinner = true;
-                Console.WriteLine("***** GIN!!! *****");
-                Console.WriteLine("***** Congratulation you won!!! *****");
+                WinMessage();
             }
             else
             {
                 isWinner = false;
             }
+        }
+        public void WinMessage()
+        {
+            Console.WriteLine("***** GIN!!! *****");
+            Console.WriteLine("***** Congratulation you won!!! *****");
         }
     }
 }

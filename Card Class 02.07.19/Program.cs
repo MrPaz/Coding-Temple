@@ -21,8 +21,8 @@ namespace Card_Class_02._07._19
 
 
 //3 card gin rummy
-// step one deal 3 cards to each player, display hands
-// giant while loop, while winner = false play game
-// step two display up card, player opposite dealer gets first choice of up card, then dealer
-// if player takes, card, must discard.  discard becomes upcard
-// if player draws from deck, deck-1, player must discard.
+// step one deal 3 cards to each player, display hands  X
+// giant while loop, while winner = false play game     X
+// step two display up card, player opposite dealer gets first choice of up card, then dealer  --simplified, player1 always starts
+// if player takes, card, must discard.  discard becomes upcard     X
+// if player draws from deck, deck-1, player must discard.      X

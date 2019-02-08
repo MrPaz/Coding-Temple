@@ -32,6 +32,7 @@ namespace Card_Class_02._07._19
                     Console.WriteLine("*** PLAYER 1 TURN ***");
                     DisplayHand("Player 1 Hand: ", _hand1);
                     Console.WriteLine("Player 1, enter \"T\" to take the upcard or \"D\" to draw from the deck.");
+                    
                 }
                 else
                 {
@@ -40,6 +41,11 @@ namespace Card_Class_02._07._19
                     Console.WriteLine("Player 2, enter \"T\" to take the upcard or \"D\" to draw from the deck.");
                 }
                 UserInput();
+
+                IsWinner(_hand1);
+                IsWinner(_hand2);
+
+
             }
         }
 

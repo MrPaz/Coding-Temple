@@ -47,13 +47,13 @@ namespace Card_Class_02._07._19
             Card[] cardsToDeal = Cards.Skip(cardsDealt).Take(numberOfCardsToDeal).ToArray();
             cardsDealt += numberOfCardsToDeal;
             return cardsToDeal;
-            Card[] hand1 = Cards.Take(handSize).ToArray();
-            cardsDealt += hand1.Length;
-            DisplayHand player1 = new DisplayHand("Player 1 Hand: ", hand1);
+            //Card[] hand1 = Cards.Take(handSize).ToArray();
+            //cardsDealt += hand1.Length;
+            //DisplayHand player1 = new DisplayHand("Player 1 Hand: ", hand1);
 
-            Card[] hand2 = Cards.Skip(cardsDealt).Take(handSize).ToArray();
-            cardsDealt += hand2.Length;
-            DisplayHand player2 = new DisplayHand("Player 2 Hand: ", hand2);
+            //Card[] hand2 = Cards.Skip(cardsDealt).Take(handSize).ToArray();
+            //cardsDealt += hand2.Length;
+            //DisplayHand player2 = new DisplayHand("Player 2 Hand: ", hand2);
         }
 
         public Card upcard = null;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Card_Class_02._07._19
 {
@@ -10,16 +11,14 @@ namespace Card_Class_02._07._19
         public Deck()
         {
             //Building the Deck of Cards:
-            string[] suits = { "Spades", "Clubs", "Hearts", "Diamonds" };
+            string[] suits = { "s", "c", "h", "d" };
             string[] values = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
-            Card[] cards = new Card[52];
+            Cards = new Card[52];
             for (int i = 0; i < suits.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    cards[(i * values.Length) + j] = new Card();
-                    cards[(i * values.Length) + j].Suit = suits[i];
-                    cards[(i * values.Length) + j].Value = values[j];
+                    Cards[(i * values.Length) + j] = new Card(suits[i], values[j]);
                 }
             }
         }
@@ -38,6 +37,20 @@ namespace Card_Class_02._07._19
                 this.Cards[position1] = this.Cards[position2];
                 this.Cards[position2] = temp;
             }
+        }
+
+        int handSize = 3;
+        int cardsDealt = 0;
+
+        public void Deal()
+        {
+            Card[] hand1 = Cards.Take(handSize).ToArray();
+            cardsDealt += hand1.Length;
+            DisplayHand player1 = new DisplayHand("Player 1 Hand: ", hand1);
+
+            Card[] hand2 = Cards.Skip(cardsDealt).Take(handSize).ToArray();
+            cardsDealt += hand2.Length;
+            DisplayHand player2 = new DisplayHand("Player 2 Hand: ", hand1);
         }
     }
 }

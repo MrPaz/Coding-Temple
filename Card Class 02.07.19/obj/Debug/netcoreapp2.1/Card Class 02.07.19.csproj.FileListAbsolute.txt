@@ -1,0 +1,11 @@
+C:\Users\mattp\source\repos\Coding Temple\Card Class 02.07.19\Card Class 02.07.19\bin\Debug\netcoreapp2.1\Card Class 02.07.19.deps.json
+C:\Users\mattp\source\repos\Coding Temple\Card Class 02.07.19\Card Class 02.07.19\bin\Debug\netcoreapp2.1\Card Class 02.07.19.runtimeconfig.json
+C:\Users\mattp\source\repos\Coding Temple\Card Class 02.07.19\Card Class 02.07.19\bin\Debug\netcoreapp2.1\Card Class 02.07.19.runtimeconfig.dev.json
+C:\Users\mattp\source\repos\Coding Temple\Card Class 02.07.19\Card Class 02.07.19\bin\Debug\netcoreapp2.1\Card Class 02.07.19.dll
+C:\Users\mattp\source\repos\Coding Temple\Card Class 02.07.19\Card Class 02.07.19\bin\Debug\netcoreapp2.1\Card Class 02.07.19.pdb
+C:\Users\mattp\source\repos\Coding Temple\Card Class 02.07.19\Card Class 02.07.19\obj\Debug\netcoreapp2.1\Card Class 02.07.19.csprojAssemblyReference.cache
+C:\Users\mattp\source\repos\Coding Temple\Card Class 02.07.19\Card Class 02.07.19\obj\Debug\netcoreapp2.1\Card Class 02.07.19.csproj.CoreCompileInputs.cache
+C:\Users\mattp\source\repos\Coding Temple\Card Class 02.07.19\Card Class 02.07.19\obj\Debug\netcoreapp2.1\Card Class 02.07.19.AssemblyInfoInputs.cache
+C:\Users\mattp\source\repos\Coding Temple\Card Class 02.07.19\Card Class 02.07.19\obj\Debug\netcoreapp2.1\Card Class 02.07.19.AssemblyInfo.cs
+C:\Users\mattp\source\repos\Coding Temple\Card Class 02.07.19\Card Class 02.07.19\obj\Debug\netcoreapp2.1\Card Class 02.07.19.dll
+C:\Users\mattp\source\repos\Coding Temple\Card Class 02.07.19\Card Class 02.07.19\obj\Debug\netcoreapp2.1\Card Class 02.07.19.pdb

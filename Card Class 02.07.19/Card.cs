@@ -17,7 +17,7 @@ namespace Card_Class_02._07._19
 
         public override string ToString()
         {
-            return $"{Value} of {Suit}";
+            return $"{Value}{Suit}";
         }
     }
 }

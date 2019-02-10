@@ -15,6 +15,10 @@ namespace Card_Class_02._07._19
         Card[] _hand1 = null; //field
         Card[] _hand2 = null; //field
         bool isWinner = false; //field
+        string winner = null;
+
+        // Console.WriteLine("How many points do you want to play to? (default = 100)");
+        // int points = int.Parse(Console.ReadLine());
 
         // constructor => sets up game, creates loop to go through until a player has won
         public PlayGame(Deck deck)
@@ -23,9 +27,8 @@ namespace Card_Class_02._07._19
             _hand1 = deck.Deal(); // ask Joe why used _hand1 here
             _hand2 = deck.Deal();
 
-            DisplayHand("Player 1 Hand: ", _hand1); 
+            DisplayHand("Player 1 Hand: ", _hand1);
             DisplayHand("Player 2 Hand: ", _hand2);
-            // PlayGame();
             deck.UpCard();
             PlayerTurn = 0;
             Message = "enter \"t\" to take the upcard or \"d\" to draw from the deck.";
@@ -37,7 +40,7 @@ namespace Card_Class_02._07._19
                     Console.WriteLine("*** PLAYER 1 TURN ***");
                     DisplayHand("Player 1 Hand: ", _hand1);
                     Console.WriteLine("Player 1, " + Message);
-                    
+
                 }
                 else
                 {
@@ -78,7 +81,7 @@ namespace Card_Class_02._07._19
             string discardInput = Console.ReadLine();
             while (discardInput != "1" && discardInput != "2" && discardInput != "3" && discardInput != "0")
             {
-                Console.WriteLine("Invalid selection. "+ message);
+                Console.WriteLine("Invalid selection. " + message);
                 discardInput = Console.ReadLine();
             }
 
@@ -103,9 +106,11 @@ namespace Card_Class_02._07._19
             {
                 Card temp = _hand1[parsedDiscardInput];
                 _hand1[parsedDiscardInput] = userSelection;
-                _deck.upcard = temp ;
+                _deck.upcard = temp;
                 DisplayHand("Player 1 Hand: ", _hand1);
-                if (IsWinner(_hand1) == true) { return; }
+                if (IsWinner(_hand1) == true) {
+                    winner = "player1";
+                    return; }
                 Console.WriteLine("Upcard: " + _deck.upcard);
                 PlayerTurn = (PlayerTurn + 1) % 2;
             }
@@ -115,7 +120,9 @@ namespace Card_Class_02._07._19
                 _hand2[parsedDiscardInput] = userSelection;
                 _deck.upcard = temp;
                 DisplayHand("Player 2 Hand: ", _hand2);
-                if (IsWinner(_hand2) == true) { return; }
+                if (IsWinner(_hand2) == true) {
+                    winner = "player2";
+                    return; }
                 Console.WriteLine("Upcard: " + _deck.upcard);
                 PlayerTurn = (PlayerTurn + 1) % 2;
             }
@@ -133,7 +140,7 @@ namespace Card_Class_02._07._19
             var cardValueRankings = new Dictionary<string, int>
             {
                 {"A", 1 },{"2", 2 }, {"3", 3 },{"4", 4 },{"5", 5 }, {"6", 6 }, {"7", 7 }, {"8", 8 },{"9",9 }, {"10", 10 },{"J", 11 },{"Q", 12 },{"K",13 },
-            };  
+            };
             var tempHand = hand.OrderBy(x => cardValueRankings[x.Value]).ToArray();
             //Array.Sort(hand);
             //if (hand.Value[0] == hand.Value[1] && hand.Value[0] == hand.Value[2])
@@ -142,11 +149,11 @@ namespace Card_Class_02._07._19
                 WinMessage();
                 isWinner = true;
                 return true;
-                
+
             }
-            else if ((tempHand.All(y => tempHand[0].Suit == y.Suit)) 
-                && (cardValueRankings[tempHand[0].Value] +1 == cardValueRankings[tempHand[1].Value] 
-                && cardValueRankings[tempHand[1].Value] +1 == cardValueRankings[tempHand[2].Value]))
+            else if ((tempHand.All(y => tempHand[0].Suit == y.Suit))
+                && (cardValueRankings[tempHand[0].Value] + 1 == cardValueRankings[tempHand[1].Value]
+                && cardValueRankings[tempHand[1].Value] + 1 == cardValueRankings[tempHand[2].Value]))
             {
                 WinMessage(); // DRY
                 isWinner = true;
@@ -162,5 +169,34 @@ namespace Card_Class_02._07._19
             Console.WriteLine("***** GIN!!! *****");
             Console.WriteLine("***** Congratulation you won!!! *****");
         }
-    }
+        public int Points(Card[] hand) // must return gin plus points from *opponent's* hand
+        {
+            int points = 0;
+            int gin = 25;
+            var cardPointValues = new Dictionary<string, int>
+            {
+                { "A", 1 },{ "2", 2 }, { "3", 3 },{ "4", 4 },{ "5", 5 }, { "6", 6 }, { "7", 7 }, { "8", 8 },{ "9",9 }, { "10", 10 },{ "J", 10 },{ "Q", 10 },{ "K",10 },
+            };
+            for (int i = 0; i < hand.Length; i++)
+            {
+                points += cardPointValues[hand[i].Value];
+            }
+            return gin + points;
+        }
+        public int Score()
+        {
+            int player1points = 0;
+            int player2points = 0;
+            if (winner == "player1")
+            {
+                player1points += Points(_hand2);
+            }
+            else
+            {
+                player2points += Points(_hand1);
+            }
+            Console.WriteLine($"Player 1: {player1points} | Player 2: {player2points}");
+            return Math.Max(player1points, player2points);
+        }
+}
 }

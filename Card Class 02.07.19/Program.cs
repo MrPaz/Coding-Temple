@@ -10,6 +10,8 @@ namespace Card_Class_02._07._19
             Deck deck = new Deck();
             deck.Shuffle();
             PlayGame game = new PlayGame(deck);
+            // add loop to play game until PlayGame.Score >= PlayGame.points
+
             // Console.WriteLine(string.Join(' ', deck.Cards.Select(x => x.Value + x.Suit).ToArray()));
             Console.ReadLine();
         }

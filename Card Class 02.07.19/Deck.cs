@@ -7,6 +7,8 @@ namespace Card_Class_02._07._19
 {
     class Deck
     {
+        // property of Card array(?)
+        public Card[] Cards { get; set; }
         // this is a special type of method called a constructor, it's run every time you create a deck of cards
         public Deck()
         {
@@ -23,14 +25,11 @@ namespace Card_Class_02._07._19
             }
         }
 
-        public Card[] Cards { get; set; }
-
         public void Shuffle()
         {
             Random rng = new Random();
             for (int i = 0; i < this.Cards.Length * 1000000; i++)
             {
-
                 int position1 = rng.Next(0, this.Cards.Length);
                 int position2 = rng.Next(0, this.Cards.Length);
                 Card temp = this.Cards[position1];

@@ -8,12 +8,9 @@ namespace Card_Class_02._07._19
         static void Main(string[] args)
         {
             Deck deck = new Deck();
-            
             deck.Shuffle();
-            // Console.WriteLine(string.Join(' ', deck.Cards.Select(x => x.Value + x.Suit).ToArray()));
-
             PlayGame game = new PlayGame(deck);
-            
+            // Console.WriteLine(string.Join(' ', deck.Cards.Select(x => x.Value + x.Suit).ToArray()));
             Console.ReadLine();
         }
     }
